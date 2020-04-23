@@ -1,0 +1,39 @@
+<!-- site layout (master page). This file includes parts of the web-application, which should be shared between all pages:
+-Head section (site <head> along with the CSS and scripts
+-Site header section (site header and top menu)
+-Site footer section -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="site-head">
+    <meta charset="UTF-8"/>
+    <title>Spring-CRUD</title>
+    <link rel="stylesheet" href="../public/css/BlogStyle.css" th:href="@{/css/BlogStyle.css}"/>
+    <script src="../public/js/jquery-3.4.1.min.js" th:src="@{js/jquery-3.4.1.min.js}"></script>
+    <script src="../public/js/blog-scripts.js" th:src="@{/js/blog-scripts.js}"></script>
+</head>
+
+<body>
+<header th:fragment="site-header" th:remove="tag">
+    <header>
+        <a href="index.html" th:href="@{/}"><img src="../public/images/logo.jpg" height="150" width="150" th:src="@{/images/logo.jpg}" /></a>
+        <a href="index.html" th:href="@{/}">Home</a>
+        <a href="users/register.html" th:href="@{/users/register}">Register</a>
+        <a href="posts/index.html" th:href="@{/posts}">Posts</a>
+        <a href="posts/create.html" th:href="@{/posts/create}">Create Post</a>
+        <a href="users/index.html" th:href="@{/users}">Users</a>
+
+        <div id="logged-in-info"> <span>Hello, <b>(user)</b></span>
+            <form method="post" th:action="@{/users/logout}">
+                <input type="submit" value="Logout"/>
+            </form>
+        </div>
+    </header>
+
+</header>
+
+<h1>Welcome</h1>
+<p>Blog Application based on Spring MVC</p>
+<footer th:fragment="site-footer">&copy; Spring MVC-CRUD Application, 2020</footer>
+</body>
+</html>
