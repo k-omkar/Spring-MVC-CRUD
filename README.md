@@ -15,7 +15,7 @@ Have these bellow intalled on your system:
 Create mysql database called 'blog_db.
 Make following changes to 'application.properties' file
     
-    spring.datasource.url = jdbc:mysql://<url of your db inluding port and name>
+    spring.datasource.url = jdbc:mysql://localhost/blog_db?characterEncoding=utf8
     spring.datasource.username = myusername
     spring.datasource.password =mypassword
   
