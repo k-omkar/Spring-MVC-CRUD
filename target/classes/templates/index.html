@@ -10,6 +10,22 @@
 <h1>This is a Spring MVC based blog application</h1>
 Currently it is: <b th:text="${execInfo.now.time}"></b>
 
+<main id="posts">
+    <article th:each="p : ${recent3posts}">
+        <h2 class="title" th:text="${p.title}">Post Title</h2>
+        <div class="date">
+            <i>Posted on</i>
+            <span th:text="${#dates.format(p.date, 'yyyy-mm-dd')}">2020-04-24</span>
+            <span th:if="${p.author}" th:remove="tag">
+          <i>by</i>
+          <span th:text="${p.author.fullName != null ?
+                        p.author.fullName : p.author.username}">John Doe</span>
+        </span>
+        </div>
+        <p class="content" th:utext="${p.body}">Post content</p>
+    </article>
+</main>
+
 <footer th:replace="layout::site-footer"></footer>
 </body>
 </html>
