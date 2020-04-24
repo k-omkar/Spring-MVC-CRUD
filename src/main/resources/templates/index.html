@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout::site-head">
     <meta charset="UTF-8">
     <title>Spring-MVC-Blog</title>
@@ -10,19 +10,24 @@
 <h1>This is a Spring MVC based blog application</h1>
 Currently it is: <b th:text="${execInfo.now.time}"></b>
 
+<aside>
+    <h2>Recent Posts</h2>
+    <a href="  #  " th:each="p : ${recent5posts}" th:text="${p.title}" th:href="@{/posts/view/{id}/(id=${p.id})}">Work Begins on HTML5.1</a>
+</aside>
+
+<br><br><br><br><br>
 <main id="posts">
     <article th:each="p : ${recent3posts}">
         <h2 class="title" th:text="${p.title}">Post Title</h2>
         <div class="date">
             <i>Posted on</i>
-            <span th:text="${#dates.format(p.date, 'yyyy-mm-dd')}">2020-04-24</span>
+            <span th:text="${#dates.format(p.date, 'dd-MM-yyyy')}">24-04-2020</span>
             <span th:if="${p.author}" th:remove="tag">
-          <i>by</i>
-          <span th:text="${p.author.fullName != null ?
-                        p.author.fullName : p.author.username}">John Doe</span>
-        </span>
+			<i>by</i>
+			<span th:text="${p.author.fullName !=null ? p.author.fullName : p.author.username}">John Doe</span>
+		</span>
         </div>
-        <p class="content" th:utext="${p.body}">Post content</p>
+        <p class="content" th:utext="${p.postBody}">Post content</p>
     </article>
 </main>
 
