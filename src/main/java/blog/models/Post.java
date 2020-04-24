@@ -1,13 +1,26 @@
 package blog.models;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name="posts")
 public class Post{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String author;
-    private String postBody;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private User author;
+
+    @Column(nullable = false, length = 100)
     private String title;
+
+    @Column
+    private String postBody;
+
+    @Column
     private Date date=new Date();
 
 
@@ -19,11 +32,11 @@ public class Post{
         this.id = id;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
@@ -53,7 +66,7 @@ public class Post{
 
     public Post() {}
 
-    public Post(Long id, String author, String postBody, String title, Date date) {
+    public Post(Long id, User author, String postBody, String title, Date date) {
         this.id = id;
         this.author = author;
         this.postBody = postBody;
