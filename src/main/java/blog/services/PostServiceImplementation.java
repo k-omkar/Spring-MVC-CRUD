@@ -19,7 +19,7 @@ public class PostServiceImplementation implements PostService{
     }
 */
     public List <Post> listRecent5(){
-        return this.postRepo.listRecent5Posts();
+        return this.postRepo.listRecent5Posts(PageRequest.of(0, 5));
     }
 /*
     public Post findById(Long id) {
