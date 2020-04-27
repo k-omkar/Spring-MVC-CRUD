@@ -16,9 +16,9 @@ public class UserServiceImplementation implements UserService{
         return this.userRepo.findAll();
     }
 
-    /*public User findById(Long id) {
-        return this.userRepo.findOne(id);
-    }*/
+    public User findById(Long id) {
+        return this.userRepo.findById(id).orElse(null);
+    }
 
     public User create(User user) {
         return this.userRepo.save(user);
@@ -27,8 +27,8 @@ public class UserServiceImplementation implements UserService{
     public User edit(User user) {
         return this.userRepo.save(user);
     }
-    /*
+
     public void deleteById(Long id) {
-        this.userRepo.delete(id);
-    }*/
+        this.userRepo.deleteById(id);
+    }
 }

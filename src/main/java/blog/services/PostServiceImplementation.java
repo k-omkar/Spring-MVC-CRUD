@@ -13,19 +13,18 @@ public class PostServiceImplementation implements PostService{
 
     @Autowired
     private PostRepository postRepo;
-/*
+
     public List<Post> listAll(){
-        return this.postRepo.listAll();
+        return this.postRepo.findAll();
     }
-*/
+
     public List <Post> listRecent5(){
         return this.postRepo.listRecent5Posts(PageRequest.of(0, 5));
     }
-/*
+
     public Post findById(Long id) {
-        return this.postRepo.findOne(id);
+        return this.postRepo.findById(id).orElse(null);
     }
-*/
     public Post create(Post post){
         return this.postRepo.save(post);
     }
@@ -35,10 +34,8 @@ public class PostServiceImplementation implements PostService{
         return this.postRepo.save(post);
     }
 
-    /*
     public void deleteById(Long id){
-        this.postRepo.delete(id);
+        this.postRepo.deleteById(id);
     }
 
-     */
 }
