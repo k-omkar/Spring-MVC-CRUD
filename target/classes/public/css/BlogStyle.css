@@ -77,3 +77,8 @@ ul#messages li.error {
 }
 
 /*-------------------------------------------------------------------*/
+
+.formError {
+    color: red;
+    font-style: italic;
+}
