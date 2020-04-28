@@ -30,6 +30,17 @@
         </div>
     </header>
 
+    <!-- Below part is to reflect notification msg on web page
+        it reads and iterates over the list of notification messages, displays each message in a <li>
+    -->
+    <ul id="messages" th:with="notifyMessages=${session[T(blog.services.NotificationServiceImplementation).NOTIFY_MSG_SESSION]}">
+
+    <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"  th:class="${#strings.toLowerCase(msg.type)}">
+    </li>
+        <span th:if="${notifyMessages}" th:remove="all" th:text="${#session.removeValue(T(blog.services.NotificationServiceImplementation).NOTIFY_MSG_SESSION)}"></span>
+
+    </ul>
+
 </header>
 
 <h1>Welcome</h1>
