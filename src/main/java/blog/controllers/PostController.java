@@ -1,6 +1,7 @@
 package blog.controllers;
 
 import blog.models.Post;
+import blog.services.NotificationService;
 import blog.services.PostService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,16 @@ public class PostController{
     @Autowired
     private PostService postService;
 
+    @Autowired
+    private NotificationService notifyService;
+
     @RequestMapping("/posts/view/{id}")
     public String view(@PathVariable("id") Long id, Model model) {
         Post post = postService.findById(id);
+        if(post == null) {
+            notifyService.addErrorMessage("Post #" + id + " not found please check again");
+            return "redirect:/";
+        }
         model.addAttribute("post", post);
         return "posts/view";
     }
