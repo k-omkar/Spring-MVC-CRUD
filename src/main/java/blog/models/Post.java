@@ -17,7 +17,7 @@ public class Post{
     @Column(nullable = false, length = 100)
     private String title;
 
-    @Column
+    @Lob @Column(name = "body")
     private String postBody;
 
     @Column
