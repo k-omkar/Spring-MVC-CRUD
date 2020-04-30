@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../public/css/BlogStyle.css" th:href="@{/css/BlogStyle.css}"/>
     <script src="../public/js/jquery-3.4.1.min.js" th:src="@{js/jquery-3.4.1.min.js}"></script>
     <script src="../public/js/blog-scripts.js" th:src="@{/js/blog-scripts.js}"></script>
+
 </head>
 
 <body>
@@ -35,8 +36,10 @@
     -->
     <ul id="messages" th:with="notifyMessages=${session[T(blog.services.NotificationServiceImplementation).NOTIFY_MSG_SESSION]}">
 
-    <li th:each="msg : ${notifyMessages}" th:text="${msg.text}"  th:class="${#strings.toLowerCase(msg.type)}">
-    </li>
+        <li th:each="msg : ${notifyMessages}"
+            th:text="${msg.text}"
+            th:class="${#strings.toLowerCase(msg.type)}">
+        </li>
         <span th:if="${notifyMessages}" th:remove="all" th:text="${#session.removeValue(T(blog.services.NotificationServiceImplementation).NOTIFY_MSG_SESSION)}"></span>
 
     </ul>
