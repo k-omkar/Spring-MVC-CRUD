@@ -17,4 +17,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("SELECT p FROM Post p LEFT JOIN FETCH p.author ORDER BY p.date DESC")
     List<Post> listRecent5Posts(Pageable pageable);
 
+    @Query("SELECT p FROM Post p LEFT JOIN FETCH p.author")
+    List<Post> listAllPosts();
 }

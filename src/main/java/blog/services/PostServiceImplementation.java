@@ -14,8 +14,8 @@ public class PostServiceImplementation implements PostService{
     @Autowired
     private PostRepository postRepo;
 
-    public List<Post> listAll(){
-        return this.postRepo.findAll();
+    public List<Post> listPosts(){
+        return this.postRepo.listAllPosts();
     }
 
     public List <Post> listRecent5(){

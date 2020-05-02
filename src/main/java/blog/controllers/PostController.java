@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 public class PostController{
 
@@ -30,5 +32,10 @@ public class PostController{
         return "posts/view";
     }
 
-
+    @RequestMapping("/posts/all_posts")
+    public String all_posts(Model model) {
+        List<Post> allPosts= postService.listPosts();
+        model.addAttribute("allPosts", allPosts);
+        return "posts/all_posts";
+    }
 }

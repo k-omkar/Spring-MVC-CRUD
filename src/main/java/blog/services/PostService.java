@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface PostService{
 
-    List <Post> listAll();
+    List <Post> listPosts();
     List <Post> listRecent5();
     Post findById(Long id);
     Post create(Post post);
