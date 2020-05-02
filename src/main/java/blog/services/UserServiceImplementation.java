@@ -3,6 +3,10 @@ package blog.services;
 import blog.models.User;
 import blog.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +22,8 @@ public class UserServiceImplementation implements UserService{
         return Objects.equals(username, password);
     }
 
-    public List<User> findAll(){
-        return this.userRepo.findAll();
+    public List<User> listUsers(){
+        return this.userRepo.listAllUsers();
     }
 
     public User findById(Long id) {
